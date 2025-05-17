@@ -38,9 +38,11 @@ export class AppService {
   getHello(): string {
     return 'Hello World!';
   }
+
   getCoffees(): Coffee[] {
     return coffees;
   }
+
   getCoffeeDisc(id: number): Coffee {
     const coffee = coffees.find((c) => c.id === id);
     if (!coffee) {
@@ -48,4 +50,10 @@ export class AppService {
     }
     return coffee;
   }
+
+  postCoffeeCreate(newCoffee: Coffee): Coffee {
+    coffees.push(newCoffee);
+    return newCoffee;
+  }
+  
 }
