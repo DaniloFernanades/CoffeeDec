@@ -33,7 +33,7 @@ const coffees: Coffee[] = [
 
 
 @Injectable()
-export class AppService {
+export class CoffesService {
 
   getHello(): string {
     return 'Hello World!';

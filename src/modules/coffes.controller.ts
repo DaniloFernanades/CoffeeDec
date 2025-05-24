@@ -1,23 +1,23 @@
 import { Controller, Get, Param, Post } from '@nestjs/common';
-import { AppService, Coffee } from './app.service';
+import { CoffesService, Coffee } from './coffes.service';
 
 @Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+export class CoffeeController {
+  constructor(private readonly coffesService: CoffesService) {}
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return this.coffesService.getHello();
   }
 
   @Get('coffees')
   getCoffees(): Coffee[] {
-    return this.appService.getCoffees();
+    return this.coffesService.getCoffees();
   }
 
   @Get(':id/detalhes')
   getCoffeeDisc(@Param('id') id: string): Coffee {
-    return this.appService.getCoffeeDisc(Number(id));
+    return this.coffesService.getCoffeeDisc(Number(id));
   }
 
   @Post('coffee-create')
@@ -31,6 +31,6 @@ export class AppController {
       quantidade: 10,
       tags: ['clássico', 'rápido']
     };
-    return this.appService.postCoffeeCreate(newCoffee);
+    return this.coffesService.postCoffeeCreate(newCoffee);
   }
 }
